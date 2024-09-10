@@ -1,6 +1,6 @@
 name: CI/CD with Docker
 
-# solution 브랜치에 push하면 워크플로우 실행!!!
+# solution 브랜치에 push하면 워크플로우 실행
 on:
   push:
     branches: [ "week11" ]
