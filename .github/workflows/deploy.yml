@@ -16,11 +16,9 @@ jobs:
         with:
           java-version: '17'
           distribution: 'zulu'
-
-      # repository secret에 올린 application.yml 빌드 시 생성
+          
       - name: Make application.yml
         run: |
-        # 최상위 루트가 blog가 아니기 때문에 ./blog를 써줘야함
           mkdir ./blog/src/main/resources 
           cd ./blog/src/main/resources
           touch ./application.yml
