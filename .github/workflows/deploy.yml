@@ -61,19 +61,14 @@ jobs:
       - name: Deploy to Server
         uses: appleboy/ssh-action@master
         with:
-          # 원격 서버의 호스트 주소 지정
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
           envs: GITHUB_SHA
           # 아래 명령들을 실행
           scripts: |
-          # 서버에서 실행 중인 docker 컨테이너 제거
             sudo docker rm -f $(sudo docker ps -qa)
-          # docker 이미지 pull
             sudo docker pull ${{ secrets.DOCKER_REPO }}:latest
-          # docker 컨테이너 실행 (-d: 서버 계속 돌아가도록, -p: port번호 지정)
             sudo docker run -d -p 8080:8080 ${{ secrets.DOCKER_REPO }}:latest
-          # 사용하지 않는 이미지 정리
             sudo docker image prune -f
           
