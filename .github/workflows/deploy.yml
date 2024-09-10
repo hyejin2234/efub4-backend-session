@@ -43,7 +43,7 @@ jobs:
 
      # Docker 이미지 빌드 후 푸시
       - name: Docker build & push
-        uses: docker/buld-push-action@v2
+        uses: docker/build-push-action@v2
         with:
           # 빌드 컨텍스트 지정: 지정한 디렉터리 안에 dockerfile이 있어야함
           context: ./blog
